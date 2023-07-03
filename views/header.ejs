@@ -1,0 +1,19 @@
+<div class="flex justify-evenly items-center p-2">
+    <div class="flex items-center gap-2">
+        <img src="/images/icon.png" class="w-12" alt="icon" />
+        <h1 class="text-xl font-semibold">Club House</h1>
+    </div>
+
+    <% if (locals.user) { %>
+        <h1><a href="/<%= user.url %>/create">Create Post</a></h1>
+        <% } %>
+            <ul class="flex w-52 justify-between">
+                <li><a href="/home">Home</a></li>
+                <% if (!locals.user) { %>
+                    <li><a href="/user/login">Login</a></li>
+                    <li><a href="/user/signup">Signup</a></li>
+                    <%}else {%> 
+                    <li><a href="/user/logout">Logout</a></li>
+                        <% } %>
+            </ul>
+</div>

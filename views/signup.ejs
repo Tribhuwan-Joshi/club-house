@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %> </title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="icon" href="/images/icon.png">
+</head>
+<body>
+    <%- include('header.ejs') %>
+    <form class="m-4" action="" method="post">
+        <label for="name">Username</label>
+        <input class="px-1 border border-black" type="text" name="name" id="name" placeholder="Unique username">
+        <label for="name">Password</label>
+        <input class="px-1 border border-black" type="password" name="name" id="name"/>
+        <input class="px-1 border border-black" type="submit" class="hover:cursor-pointer" value="signup"/>
+    </form>
+    <%- include('footer');%>
+
+</body>
+</html>
