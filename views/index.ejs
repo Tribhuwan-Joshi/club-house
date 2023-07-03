@@ -3,9 +3,11 @@
   <head>
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="icon" href="/images/icon.png">
   </head>
   <body>
-    <h1><%= title %></h1>
+    <h1 class="bg-red-200"><%= title %></h1>
     <p>Welcome to <%= title %></p>
+    <%- include('footer'); -%>
   </body>
 </html>
