@@ -32,7 +32,11 @@ app.use("/catalog", catalogRouter);
 
 // connect to mongoose
 async function main() {
-  await mongoose.connect(process.env.MONGO_URL, console.log("connected DB"));
+  await mongoose.connect(
+    process.env.MONGO_URL,
+    { useUnifiedTopology: true, useNewUrlParser: true },
+    console.log("connected DB")
+  );
 }
 main().catch((err) => console.log(err));
 

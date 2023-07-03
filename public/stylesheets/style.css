@@ -533,6 +533,9 @@ video {
 .font-semibold {
   font-weight: 600;
 }
+.text-inherit {
+  color: inherit;
+}
 a {
   color: rgb(28, 28, 250);
 }

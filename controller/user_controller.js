@@ -24,3 +24,4 @@ exports.lounge_get = function (req, res, next) {
 exports.lounge_post = function (req, res, next) {
   res.send("Lounge set - check  secret code");
 };
+
