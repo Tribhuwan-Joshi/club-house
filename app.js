@@ -8,21 +8,34 @@ const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
 const catalogRouter = require("./routes/catalog");
 const mongoose = require("mongoose");
-
+const session = require("express-session");
+const passport = require("passport");
+const LocalStrategy = require("passport-local").Strategy;
+const { body, validationResult } = require("express-validator");
 const app = express();
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
-
 app.use(logger("dev"));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
+// session and passport use
+app.use(
+  session({
+    secret: process.env.SECRET,
+    resave: false,
+    saveUninitialized: true,
+  })
+);
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(express.urlencoded({ extended: false }));
+
 // app.use(function (req, res, next) {
-//   res.locals.user = { url: "lol" };
+//   res.locals.user = { id:"1234" , username:"Tjsm"};
 //   next();
 // });
 
@@ -37,6 +50,8 @@ async function main() {
     { useUnifiedTopology: true, useNewUrlParser: true },
     console.log("connected DB")
   );
+  const db = mongoose.connection;
+  db.on("error", console.error.bind(console, "Mongo connection Error"));
 }
 main().catch((err) => console.log(err));
 

@@ -1,22 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= title %> </title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-    <link rel="icon" href="/images/icon.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %> </title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <link rel="icon" href="/images/icon.png">
 </head>
+
 <body>
-    <%- include('header.ejs') %>
-    <form class="m-4" action="" method="post">
-        <label for="name">Username</label>
-        <input class="px-1 border border-black" type="text" name="name" id="name" placeholder="Unique username">
-        <label for="name">Password</label>
-        <input class="px-1 border border-black" type="password" name="name" id="name"/>
-        <input class="px-1 border border-black" type="submit" class="hover:cursor-pointer" value="signup"/>
-    </form>
-    <%- include('footer');%>
+  <%- include('header.ejs') %>
+  <form class="mx-auto bg-gray-200 w-max p-4 grid grid-cols-[1fr,2fr] gap-6 my-10" action="" method="post">
+
+    <label for="name">Username</label>
+    <input required class="px-1 font-mono border border-black" type="text" name="username" id="name" placeholder="Unique username">
+
+    <label for="password">Password</label>
+    <input required class="px-1 font-mono border border-black" type="password" name="password" id="password" />
+    <label for="confirm">Confirm Password</label>
+    <input required class="px-1 font-mono border border-black" type="password" name="confirm" id="confirm" />
+
+
+    <input class="p-1 col-span-2 justify-self-center hover:cursor-pointer px-2 hover:scale-105 bg-yellow-50 border border-black" type="submit" value="Signup" />
+  </form>
+  <%- include('footer');%>
 
 </body>
+
 </html>
