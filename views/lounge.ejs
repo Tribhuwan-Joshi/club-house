@@ -11,12 +11,10 @@
 
 <body>
   <%- include('header.ejs') %>
-
   <form class="mx-auto bg-gray-200 w-max p-4 grid grid-cols-[1fr,2fr] gap-6 my-10" action="" method="post">
-
-    <label for="name">Username</label>
-    <input required class="px-1 font-mono border border-black" type="text" name="username" id="name" value="<%= username ? username : '' %>" placeholder="Unique username">
-
+    <p>Enter club code become memeber and view profile of users</p>
+    <label for="code">Club Code </label>
+    <input required class="px-1 font-mono border border-black" type="text" name="code" id="code" placeholder="Club Code">
 
     <label for="password">Password</label>
     <input required class="px-1 font-mono border border-black" type="password" name="password" id="password" />
@@ -27,7 +25,7 @@
     <ul class="col-span-2 list-disc inline-block justify-self-center">
 
       <%errors.forEach((err)=>{ %>
-      <li class="text-red-500 font-semibold text-sm"><%=err.msg%> </li>
+      <li class="text-red-500 text-sm"><%=err.msg%> </li>
       <%});%>
 
     </ul>

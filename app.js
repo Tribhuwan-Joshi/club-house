@@ -13,6 +13,7 @@ const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 const { body, validationResult } = require("express-validator");
 const app = express();
+const User = require("./models/user");
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
@@ -30,6 +31,38 @@ app.use(
     saveUninitialized: true,
   })
 );
+
+// local strategy
+passport.use(
+  new LocalStrategy(async (username, password, done) => {
+    try {
+      const user = await User.findOne({ username: username });
+      if (!user) {
+        return done(null, false, { message: "Incorrect username" });
+      }
+      if (user.password !== password) {
+        return done(null, false, { message: "Incorrect password" });
+      }
+      return done(null, user);
+    } catch (err) {
+      return done(err);
+    }
+  })
+);
+
+passport.serializeUser(function (user, done) {
+  done(null, user.id);
+});
+
+passport.deserializeUser(async function (id, done) {
+  try {
+    const user = await User.findById(id);
+    done(null, user);
+  } catch (err) {
+    done(err);
+  }
+});
+
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.urlencoded({ extended: false }));
@@ -47,7 +80,11 @@ app.use("/catalog", catalogRouter);
 async function main() {
   await mongoose.connect(
     process.env.MONGO_URL,
-    { useUnifiedTopology: true, useNewUrlParser: true },
+    {
+      useUnifiedTopology: true,
+      useNewUrlParser: true,
+      socketTimeoutMS: 120000,
+    },
     console.log("connected DB")
   );
   const db = mongoose.connection;
