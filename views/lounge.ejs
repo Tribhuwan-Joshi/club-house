@@ -11,15 +11,18 @@
 
 <body>
   <%- include('header.ejs') %>
-  <form class="mx-auto bg-gray-200 w-max p-4 grid grid-cols-[1fr,2fr] gap-6 my-10" action="" method="post">
-    <p>Enter club code become memeber and view profile of users</p>
-    <label for="code">Club Code </label>
-    <input required class="px-1 font-mono border border-black" type="text" name="code" id="code" placeholder="Club Code">
 
-    <label for="password">Password</label>
-    <input required class="px-1 font-mono border border-black" type="password" name="password" id="password" />
-    <label for="confirm">Confirm Password</label>
-    <input required class="px-1 font-mono border border-black" type="password" name="confirm" id="confirm" />
+  <form class="mx-auto bg-gray-200 w-max p-4 grid grid-cols-[1fr,2fr] gap-6 my-10" action="" method="post">
+    <p>Welcome ! <span class="font-semibold"><%=user.username%></span> </p>
+    <p class="col-span-2">Enter club code for memembership</p>
+    <label for="code">Club Code *</label>
+    <input required class="px-1 font-mono border border-black" type="text" name="code" id="code" />
+    <label for="adminCode">Admin Code</label>
+    <div class="flex flex-col"><input required class="px-1 font-mono border  border-black" placeholder="Optional" type="text" name="adminCode" id="adminCode" />
+      <p class="text-sm">Enter Admin Code to become an admin</p>
+    </div>
+
+
 
     <% if(typeof errors !== 'undefined'){%>
     <ul class="col-span-2 list-disc inline-block justify-self-center">

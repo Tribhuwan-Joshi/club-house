@@ -21,7 +21,6 @@ exports.signup_post = [
     .escape(),
   body("confirm")
     .custom((val, { req }) => {
-      console.log(val, typeof val, req.body.password);
       if (val !== req.body.password) {
         throw new Error("Confirm password don't match");
       }
@@ -46,11 +45,16 @@ exports.signup_post = [
         });
       } else {
         req.user = user;
-        res.redirect("/user/lounge");
+        next();
       }
     } catch (err) {
       return next(err);
     }
+  },
+  function (req, res, next) {
+    const user = req.user;
+    console.log("user is", user);
+    res.render("lounge", { title: "Lounge", user });
   },
 ];
 
@@ -66,12 +70,6 @@ exports.getUserDetails = function (req, res, next) {
   res.send("Get user details");
 };
 
-exports.lounge_get = function (req, res, next) {
-  console.log(req);
-  const user = req.user;
-  res.send(`Lounge get user ${user}`);
-};
-
-exports.lounge_post = function (req, res, next) {
+exports.lounge_get = exports.lounge_post = function (req, res, next) {
   res.send("Lounge set - check  secret code");
 };

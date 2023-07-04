@@ -83,7 +83,7 @@ async function main() {
     {
       useUnifiedTopology: true,
       useNewUrlParser: true,
-      socketTimeoutMS: 120000,
+      socketTimeoutMS: 300000,
     },
     console.log("connected DB")
   );
