@@ -9,15 +9,15 @@ html(lang='en')
     link(rel="icon" href="/images/icon.png")
   body
     block header 
-        header(class="flex justify-around md:justify-evenly items-center p-2")
+        header(class="flex bg-yellow-100 justify-around md:justify-evenly items-center p-2")
             div(class="flex items-center gap-2")
-                img(src="/images/icon.png" class="w-12" alt="icon")
-                h1(class="text-xl font-semibold")
+                img(src="/images/icon.png" class="w-10 nd:w-12" alt="icon")
+                h1(class="text-xl lg:text-2xl ")
                     a(class="text-inherit" href="/catalog") Club House 
             if user 
                 h1 
                     a(href="/post/create") Create Post
-            ul(class="flex w-40 md:w-52 justify-between")
+            ul(class="flex lg:text-lg w-40 md:w-52 justify-between")
                 li 
                     a(href="/catalog") Home 
                 if !user
@@ -38,11 +38,4 @@ html(lang='en')
             p Developed by 
                 a(href="https://github.com/Tribhuwan-Joshi" target="_blank") Tjsm 
                 p &copy;
-                    script
-                        document.write(new Date().getFullYear()) 
-
-
-      
-
-
-    
+                    span= new Date().getFullYear()
