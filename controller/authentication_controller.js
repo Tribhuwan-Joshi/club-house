@@ -66,6 +66,14 @@ exports.signup_post = [
   },
 ];
 
+exports.membership_get = function (req, res, next) {
+  res.send("Get membership page");
+};
+
+exports.membership_post = function (req, res, next) {
+  res.send("post membership page");
+};
+
 exports.logout = function (req, res, next) {
-  res.send("logout the user");
+  res.send(`logout the user with id ${req.params.id}`);
 };

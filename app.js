@@ -17,7 +17,7 @@ const User = require("./models/user");
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
-app.set("view engine", "ejs");
+app.set("view engine", "pug");
 app.use(logger("dev"));
 app.use(express.json());
 app.use(cookieParser());
@@ -67,10 +67,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.urlencoded({ extended: false }));
 
-// app.use(function (req, res, next) {
-//   res.locals.user = { id:"1234" , username:"Tjsm"};
-//   next();
-// });
+
 
 app.use("/", indexRouter);
 app.use("/user", usersRouter);

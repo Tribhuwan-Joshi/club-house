@@ -1,0 +1,15 @@
+extends layout 
+block content
+	form(class="mx-auto bg-gray-100  w-max p-4 grid grid-cols-[1fr,2fr] gap-6 my-10" action="" method="post")
+		label(for="username") Username 
+		input(id="username" required name="username" placeholder="Unique Username" type="text" class="px-1 font-mono border border-black")
+		label(for="password") Password 
+		input(id="password" required name="password"  type="password" class="px-1 font-mono border border-black")
+		label(for="confirm") Confirm Password 
+		input(id="confirm" required name="confirm"  type="password" class="px-1 font-mono border border-black")
+		if errors 
+			ul(class="col-span-2 list-disc inline-block justify-self-center")
+				for error in errors
+					li(class="text-red-500 font-semibold text-sm")!= error.msg
+		input(class="p-1 col-span-2 justify-self-center hover:cursor-pointer px-2 hover:scale-105 bg-yellow-50 border border-black" type="submit" value="Signup")
+		

@@ -487,8 +487,8 @@ video {
   margin-top: 2.5rem;
   margin-bottom: 2.5rem;
 }
-.mr-12 {
-  margin-right: 3rem;
+.block {
+  display: block;
 }
 .inline-block {
   display: inline-block;
@@ -515,9 +515,6 @@ video {
 .grid-cols-\[1fr\2c 2fr\] {
   grid-template-columns: 1fr 2fr;
 }
-.flex-col {
-  flex-direction: column;
-}
 .items-center {
   align-items: center;
 }
@@ -527,17 +524,11 @@ video {
 .justify-around {
   justify-content: space-around;
 }
-.justify-evenly {
-  justify-content: space-evenly;
-}
 .gap-2 {
   gap: 0.5rem;
 }
 .gap-6 {
   gap: 1.5rem;
-}
-.gap-4 {
-  gap: 1rem;
 }
 .justify-self-center {
   justify-self: center;
@@ -561,6 +552,10 @@ video {
   --tw-bg-opacity: 1;
   background-color: rgb(254 252 232 / var(--tw-bg-opacity));
 }
+.bg-gray-100 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(243 244 246 / var(--tw-bg-opacity));
+}
 .p-1 {
   padding: 0.25rem;
 }
@@ -581,16 +576,16 @@ video {
 .font-mono {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
+.text-lg {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
 .text-sm {
   font-size: 0.875rem;
   line-height: 1.25rem;
 }
 .text-xl {
   font-size: 1.25rem;
-  line-height: 1.75rem;
-}
-.text-lg {
-  font-size: 1.125rem;
   line-height: 1.75rem;
 }
 .font-semibold {
@@ -621,11 +616,6 @@ a:hover {
 
   .md\:w-52 {
     width: 13rem;
-  }
-
-  .md\:w-max {
-    width: -moz-max-content;
-    width: max-content;
   }
 
   .md\:justify-evenly {
