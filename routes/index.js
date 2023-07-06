@@ -16,6 +16,6 @@ router.post("/signup", authentication_controller.signup_post);
 router.get("/:id/membership", authentication_controller.membership_get);
 router.post("/:id/membership", authentication_controller.membership_post);
 
-router.post("/:id/logout", authentication_controller.logout);
+router.post("/logout", authentication_controller.logout);
 
 module.exports = router;
