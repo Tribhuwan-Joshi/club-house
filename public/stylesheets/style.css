@@ -526,6 +526,15 @@ video {
 .mt-6 {
   margin-top: 1.5rem;
 }
+.mt-5 {
+  margin-top: 1.25rem;
+}
+.mb-6 {
+  margin-bottom: 1.5rem;
+}
+.mb-4 {
+  margin-bottom: 1rem;
+}
 .block {
   display: block;
 }
@@ -681,8 +690,16 @@ video {
   margin-top: calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(0.5rem * var(--tw-space-y-reverse));
 }
+.space-y-10 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(2.5rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(2.5rem * var(--tw-space-y-reverse));
+}
 .justify-self-center {
   justify-self: center;
+}
+.break-words {
+  overflow-wrap: break-word;
 }
 .rounded-sm {
   border-radius: 0.125rem;
@@ -735,6 +752,9 @@ video {
 .p-4 {
   padding: 1rem;
 }
+.p-3 {
+  padding: 0.75rem;
+}
 .px-1 {
   padding-left: 0.25rem;
   padding-right: 0.25rem;
@@ -780,6 +800,12 @@ video {
 }
 .italic {
   font-style: italic;
+}
+.leading-3 {
+  line-height: .75rem;
+}
+.tracking-wider {
+  letter-spacing: 0.05em;
 }
 .text-inherit {
   color: inherit;
@@ -829,6 +855,11 @@ a:hover {
 
   .md\:w-52 {
     width: 13rem;
+  }
+
+  .md\:w-max {
+    width: -moz-max-content;
+    width: max-content;
   }
 
   .md\:justify-evenly {
