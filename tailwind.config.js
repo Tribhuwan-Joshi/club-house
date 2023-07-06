@@ -2,7 +2,11 @@
 module.exports = {
   content: ["./views/*.{pug,html}"],
   theme: {
-    extend: {},
+    extend: {
+      gridTemplateColumns: {
+        res: "repeat(auto-fit,minmax(250px,500px)",
+      },
+    },
   },
   plugins: [],
 };
