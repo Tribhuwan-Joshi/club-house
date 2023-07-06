@@ -8,7 +8,7 @@ exports.post_get = function (req, res, next) {
 };
 
 exports.create_get = function (req, res, next) {
-  res.send("post create form");
+  res.render("createPost",{title:"Create Post"})
 };
 
 exports.delete_post_post = function (req, res, next) {
