@@ -1,0 +1,28 @@
+extends layout 
+block content
+    div(class="w-[80%] mx-auto mt-10 flex justify-evenly items-center flex-wrap")
+        div(style="flex-basis:500px")
+            h1(class="text-xl font-semibold") I heard Tjsm wanna be a member !
+            p(class="mt-2 underline text-lg") Benefits ?
+            ul(class="list-disc") 
+                li Able to see the original poster of the post 
+                li Able to see the date and time of the post
+                li Able to view profile of other club members 
+            p(class="mt-2 underline text-lg") How to get membership ?
+            ul(class="list-disc") 
+                li You have enter a secret club code to get membership 
+                li You have to ask other club member for the code 
+        div
+            form(class="mx-auto border border-gray-700 bg-gray-100  w-max p-4 grid grid-cols-[1fr,2fr] gap-6 my-10" action="" method="post")
+                label(for="username") Club Code 
+                input(id="code" required name="code" placeholder="Club Code" type="text"  class="px-1 font-mono border border-black")
+                if errors
+                    ul(class="col-span-2 list-disc inline-block justify-self-center")
+                        for error in errors
+                            li(class="text-red-500 font-semibold text-sm")!= error.msg
+                input(class="p-1 col-span-2 justify-self-center hover:cursor-pointer px-2 hover:scale-105 bg-yellow-50 border border-black" type="submit" value="Become Member")
+    
+			
+				
+					
+		

@@ -68,7 +68,7 @@ exports.signup_post = [
 ];
 
 exports.membership_get = function (req, res, next) {
-  res.send("Get membership page");
+  res.render("membership", { title: "Get Membership" });
 };
 
 exports.membership_post = function (req, res, next) {
