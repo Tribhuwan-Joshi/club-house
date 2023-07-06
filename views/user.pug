@@ -4,9 +4,15 @@ block content
         div(class="mt-10 mx-auto") 
             h1(class="text-xl underline font-bold mb-4 tracking-wider text-center") User Details 
             div(class="space-y-2 mb-6 text-center")
-                p Name: Tjsm 
-                p Joined at: 12 Dec 2020
-                p Number of posts : 40
+                p(class="text-lg") Username:
+                    span(class=" ml-5 font-semibold text-lg") Tjsm 
+                    span(class="border  border-red-600 text-red-600 rounded-sm ml-4 px-1") Admin
+                    span(class="border  border-green-600 text-green-600 rounded-sm ml-4 px-1") Member
+
+                p(class="text-lg") Joined at:
+                    span(class=" ml-5  text-lg") 12 Dec 2020
+                p(class="text-lg") Number of posts :
+                    span(class=" ml-5  text-lg") 40
             // Get all post sort by date
             hr
             div(class="mt-6 allposts text-center underline text-lg mb-4") All posts by Tjsm
@@ -25,4 +31,5 @@ block content
                     a(href="/catalog/post/id") How to deal with deez nuts
                 li
                     a(href="/catalog/post/id") How to deal with deez nuts
+            hr
             
