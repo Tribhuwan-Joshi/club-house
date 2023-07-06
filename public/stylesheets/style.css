@@ -520,6 +520,12 @@ video {
 .mb-10 {
   margin-bottom: 2.5rem;
 }
+.ml-auto {
+  margin-left: auto;
+}
+.mt-6 {
+  margin-top: 1.5rem;
+}
 .block {
   display: block;
 }
@@ -554,11 +560,17 @@ video {
 .w-\[90\%\] {
   width: 90%;
 }
+.w-\[60\%\] {
+  width: 60%;
+}
 .min-w-\[\] {
   min-width: ;
 }
 .min-w-\[300px\] {
   min-width: 300px;
+}
+.min-w-\[400px\] {
+  min-width: 400px;
 }
 .flex-1 {
   flex: 1 1 0%;
@@ -635,6 +647,9 @@ video {
 .items-center {
   align-items: center;
 }
+.justify-end {
+  justify-content: flex-end;
+}
 .justify-center {
   justify-content: center;
 }
@@ -669,6 +684,9 @@ video {
 .justify-self-center {
   justify-self: center;
 }
+.rounded-sm {
+  border-radius: 0.125rem;
+}
 .border {
   border-width: 1px;
 }
@@ -699,6 +717,14 @@ video {
 .bg-gray-50 {
   --tw-bg-opacity: 1;
   background-color: rgb(249 250 251 / var(--tw-bg-opacity));
+}
+.bg-red-600 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(220 38 38 / var(--tw-bg-opacity));
+}
+.bg-red-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(239 68 68 / var(--tw-bg-opacity));
 }
 .p-1 {
   padding: 0.25rem;
@@ -749,6 +775,9 @@ video {
 .font-semibold {
   font-weight: 600;
 }
+.font-bold {
+  font-weight: 700;
+}
 .italic {
   font-style: italic;
 }
@@ -758,6 +787,10 @@ video {
 .text-red-500 {
   --tw-text-opacity: 1;
   color: rgb(239 68 68 / var(--tw-text-opacity));
+}
+.text-white {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 .underline {
   text-decoration-line: underline;
@@ -775,6 +808,22 @@ a:hover {
 }
 .hover\:cursor-pointer:hover {
   cursor: pointer;
+}
+.hover\:bg-red-400:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(248 113 113 / var(--tw-bg-opacity));
+}
+.hover\:bg-red-600:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(220 38 38 / var(--tw-bg-opacity));
+}
+.hover\:bg-blue-600:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(37 99 235 / var(--tw-bg-opacity));
+}
+.active\:bg-red-400:active {
+  --tw-bg-opacity: 1;
+  background-color: rgb(248 113 113 / var(--tw-bg-opacity));
 }
 @media (min-width: 768px) {
 

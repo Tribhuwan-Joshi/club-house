@@ -4,7 +4,7 @@ exports.allposts = function (req, res, next) {
 
 exports.post_get = function (req, res, next) {
   const id = req.params.id;
-  res.send(`get post of id ${id}`);
+ res.render("post",{title:id})
 };
 
 exports.create_get = function (req, res, next) {
