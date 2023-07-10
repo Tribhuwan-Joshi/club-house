@@ -55,7 +55,8 @@ exports.signup_get = function (req, res, next) {
 exports.signup_post = [
   body("username")
     .custom(async (val) => {
-      const user = await User.findOne({ username: val.toLowerCase() });
+      const user = await User.findOne({ username: val });
+      console.log("val is ", val, " and user is ", user);
       if (user) {
         throw new Error("Username already in use");
       }
@@ -99,7 +100,7 @@ exports.signup_post = [
         brcypt.hash(user.password, 10, async (err, hashedPassword) => {
           user.password = hashedPassword;
           const result = await user.save();
-          res.send(`Done signup of ${user.username}`);
+          res.redirect("/");
         });
       }
     } catch (err) {
