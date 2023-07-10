@@ -4,6 +4,7 @@ const authentication_controller = require("../controller/authentication_controll
 
 /* GET home page. */
 router.get("/", function (req, res, next) {
+
   res.redirect("/catalog");
 });
 

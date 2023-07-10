@@ -1,13 +1,51 @@
 const User = require("../models/user");
 const { body, validationResult } = require("express-validator");
+const passport = require("passport");
+const LocalStrategy = require("passport-local");
+const brcypt = require("bcryptjs");
 
+// strategy when user logged in
+passport.use(
+  new LocalStrategy(async (username, password, done) => {
+    try {
+      const user = await User.findOne({ username: username });
+      if (!user) {
+        return done(null, false, { message: "Incorrect username" });
+      }
+      brcypt.compare(password, user.password, (err, res) => {
+        if (res) {
+          return done(null, user);
+        } else {
+          return done(null, false, { message: "Incorrect password" });
+        }
+      });
+      return done(null, user);
+    } catch (err) {
+      return done(err);
+    }
+  })
+);
+
+//
+passport.serializeUser(function (user, done) {
+  done(null, user.id);
+});
+
+passport.deserializeUser(async function (id, done) {
+  try {
+    const user = await User.findById(id);
+    done(null, user);
+  } catch (err) {
+    done(err);
+  }
+});
 exports.login_get = function (req, res, next) {
   res.render("login", { title: "Login" });
 };
 exports.login_post = function (req, res, next) {
   passport.authenticate("local", {
     successRedirect: "/",
-    failureRedirect: "/",
+    failureRedirect: "/login",
   });
 };
 
@@ -58,8 +96,11 @@ exports.signup_post = [
           errors: errors.array(),
         });
       } else {
-        req.user = user;
-        next();
+        brcypt.hash(user.password, 10, async (err, hashedPassword) => {
+          user.password = hashedPassword;
+          const result = await user.save();
+          res.send(`Done signup of ${user.username}`);
+        });
       }
     } catch (err) {
       return next(err);
