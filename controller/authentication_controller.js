@@ -70,6 +70,17 @@ exports.signup_post = [
     .isLength({ min: 4 })
     .withMessage("Password should have at least 4 characters")
     .escape(),
+  body("adminCode")
+    .trim()
+    .isLength({ min: 4 })
+    .withMessage("Admin Code should have at least 4 characters")
+    .escape()
+    .optional({ checkFalsy: true })
+    .custom((val) => {
+      if (val !== process.env.ADMIN_CODE)
+        throw new Error("Admin Code doesn't match");
+      return true;
+    }),
 
   body("confirm")
     .trim()
@@ -81,6 +92,7 @@ exports.signup_post = [
     })
     .withMessage("Confirm password doesn't match")
     .escape(),
+
   async function (req, res, next) {
     const errors = validationResult(req);
     try {
