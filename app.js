@@ -3,13 +3,18 @@ const express = require("express");
 const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
+
 require("dotenv").config();
+
+// Router
 const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
 const catalogRouter = require("./routes/catalog");
+
 const mongoose = require("mongoose");
 const session = require("express-session");
 const passport = require("passport");
+const bcrypt = require("bcryptjs");
 const LocalStrategy = require("passport-local").Strategy;
 
 const app = express();
@@ -22,6 +27,7 @@ app.use(logger("dev"));
 app.use(express.json());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
+app.use(express.urlencoded({ extended: false }));
 
 // session and passport use
 app.use(
@@ -34,11 +40,12 @@ app.use(
 
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(express.urlencoded({ extended: false }));
 passport.use(
   new LocalStrategy(async (username, password, done) => {
+    console.log("here lol");
     try {
       const user = await User.findOne({ username: username });
+
       if (!user) {
         return done(null, false, { message: "Incorrect username" });
       }
@@ -49,7 +56,6 @@ passport.use(
           return done(null, false, { message: "Incorrect password" });
         }
       });
-      return done(null, user);
     } catch (err) {
       return done(err);
     }
@@ -74,7 +80,7 @@ app.use(function (req, res, next) {
 });
 
 app.use("/", indexRouter);
-app.use("/user", usersRouter);
+app.use("/users", usersRouter);
 app.use("/catalog", catalogRouter);
 
 // connect to mongoose

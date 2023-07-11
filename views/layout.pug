@@ -28,10 +28,10 @@ html(lang='en')
                         a(href="/signup") Signup  
                 else
                     li 
-                        a(href="/user/"+user.id) #{user.username}  
+                        a(href="/user/"+user._id) #{user.username}  
                     li 
-                        a(href="/"+user.id+"/membership") Membership 
-                    form(action="#{user.id}/logout" method="POST")
+                        a(href="/"+user._id+"/membership") Membership 
+                    form(action="/logout" method="POST")
                         button(class="p-1 px-2 text-lg") Logout 
     block content
     block footer 
