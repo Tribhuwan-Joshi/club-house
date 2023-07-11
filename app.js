@@ -42,7 +42,6 @@ app.use(passport.initialize());
 app.use(passport.session());
 passport.use(
   new LocalStrategy(async (username, password, done) => {
-    console.log("here lol");
     try {
       const user = await User.findOne({ username: username });
 
@@ -116,4 +115,3 @@ app.use(function (err, req, res, next) {
 });
 
 module.exports = app;
-exports.passport = passport;

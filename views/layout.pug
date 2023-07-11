@@ -16,9 +16,9 @@ html(lang='en')
                     a(class="text-inherit" href="/catalog") Club House 
                     
             if user 
-                h1 
-                    a(href="/post/create") Create Post
-            ul(class="flex lg:text-lg w-max items-center md:w-52 gap-4")
+                h1(class="text-lg") 
+                    a(href="/catalog/post/create") Create Post
+            ul(class="flex lg:text-lg w-max items-center md:w-max gap-4")
                 li(class="hidden md:block")
                     a(href="/catalog") Home 
                 if !user
@@ -28,10 +28,10 @@ html(lang='en')
                         a(href="/signup") Signup  
                 else
                     
-                    li(class="hidden md:block") 
-                        a(href="/user/"+user._id) #{user.username}  
                     li(class="hidden md:block")  
                         a(href="/"+user._id+"/membership") Membership 
+                    li(class="hidden md:block underline") 
+                        a(href="/user/"+user._id) #{user.username}  
                     form(action="/logout" method="POST")
                         button(class="p-1 px-2 text-lg") Logout 
     block content

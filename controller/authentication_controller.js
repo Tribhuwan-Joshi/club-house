@@ -78,7 +78,7 @@ exports.signup_post = [
             if (err) {
               return next(err);
             }
-            return res.redirect("/users/" + req.user._id);
+            return res.redirect("/");
           });
         });
       }
