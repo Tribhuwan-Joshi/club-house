@@ -16,6 +16,7 @@ exports.post_get = function (req, res, next) {
 exports.create_get = function (req, res, next) {
   res.render("createPost", { title: "Create Post" });
 };
+
 exports.create_post = [
   body("title", "Title is required").trim().escape().isLength({ min: 1 }),
   body("story", "Tale is important dude").trim().escape().isLength({ min: 1 }),
