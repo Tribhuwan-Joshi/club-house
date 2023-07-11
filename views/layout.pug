@@ -11,15 +11,15 @@ html(lang='en')
     block header 
         header(class="flex bg-yellow-100 justify-around md:justify-evenly items-center p-2")
             div(class="flex items-center gap-2")
-                img(src="/images/icon.png" class="w-10 nd:w-12" alt="icon")
+                img(src="/images/icon.png" class="w-10 hidden sm:block nd:w-12" alt="icon")
                 h1(class="text-xl lg:text-2xl font-semibold")
                     a(class="text-inherit" href="/catalog") Club House 
                     
             if user 
                 h1 
                     a(href="/post/create") Create Post
-            ul(class="flex lg:text-lg w-40 md:w-52 justify-between")
-                li 
+            ul(class="flex lg:text-lg w-max items-center md:w-52 gap-4")
+                li(class="hidden md:block")
                     a(href="/catalog") Home 
                 if !user
                     li 
@@ -27,9 +27,10 @@ html(lang='en')
                     li 
                         a(href="/signup") Signup  
                 else
-                    li 
+                    
+                    li(class="hidden md:block") 
                         a(href="/user/"+user._id) #{user.username}  
-                    li 
+                    li(class="hidden md:block")  
                         a(href="/"+user._id+"/membership") Membership 
                     form(action="/logout" method="POST")
                         button(class="p-1 px-2 text-lg") Logout 

@@ -534,11 +534,11 @@ video {
 .grid {
   display: grid;
 }
+.hidden {
+  display: none;
+}
 .w-10 {
   width: 2.5rem;
-}
-.w-40 {
-  width: 10rem;
 }
 .w-\[60\%\] {
   width: 60%;
@@ -570,48 +570,6 @@ video {
 }
 .grid-cols-\[repeat\(auto-fit\2c minmax\(100px\2c 400px\)\)\] {
   grid-template-columns: repeat(auto-fit,minmax(100px,400px));
-}
-.grid-rows-\[repeat\] {
-  grid-template-rows: repeat;
-}
-.grid-rows-\[repeat\(auto\)\] {
-  grid-template-rows: repeat(auto);
-}
-.grid-rows-\[repeat\(auto-fill\2c minmax\(1fr\2c 100px\)\)\] {
-  grid-template-rows: repeat(auto-fill,minmax(1fr,100px));
-}
-.grid-rows-\[repeat\(auto-fill\2c minmax\(10px\2c 100px\)\)\] {
-  grid-template-rows: repeat(auto-fill,minmax(10px,100px));
-}
-.grid-rows-\[repeat\(auto-fill\2c minmax\(2px\2c 100px\)\)\] {
-  grid-template-rows: repeat(auto-fill,minmax(2px,100px));
-}
-.grid-rows-\[repeat\(auto-fill\2c minmax\(2px\2c 10px\)\)\] {
-  grid-template-rows: repeat(auto-fill,minmax(2px,10px));
-}
-.grid-rows-\[repeat\(auto-fill\2c minmax\(px\2c 10px\)\)\] {
-  grid-template-rows: repeat(auto-fill,minmax(px,10px));
-}
-.grid-rows-\[repeat\(auto-fill\2c minmax\(20px\2c 10px\)\)\] {
-  grid-template-rows: repeat(auto-fill,minmax(20px,10px));
-}
-.grid-rows-\[repeat\(auto-fill\2c minmax\(25px\2c 10px\)\)\] {
-  grid-template-rows: repeat(auto-fill,minmax(25px,10px));
-}
-.grid-rows-\[repeat\(auto-fill\2c minmax\(25px\2c 8px\)\)\] {
-  grid-template-rows: repeat(auto-fill,minmax(25px,8px));
-}
-.grid-rows-\[repeat\(auto-fill\2c minmax\(25px\2c px\)\)\] {
-  grid-template-rows: repeat(auto-fill,minmax(25px,px));
-}
-.grid-rows-\[repeat\(auto-fill\2c minmax\(25px\2c 7px\)\)\] {
-  grid-template-rows: repeat(auto-fill,minmax(25px,7px));
-}
-.flex-row {
-  flex-direction: row;
-}
-.flex-col {
-  flex-direction: column;
 }
 .flex-wrap {
   flex-wrap: wrap;
@@ -745,10 +703,6 @@ video {
   font-size: 1.25rem;
   line-height: 1.75rem;
 }
-.text-xs {
-  font-size: 0.75rem;
-  line-height: 1rem;
-}
 .font-bold {
   font-weight: 700;
 }
@@ -820,7 +774,17 @@ a:hover {
 .hover\:no-underline:hover {
   text-decoration-line: none;
 }
+@media (min-width: 640px) {
+
+  .sm\:block {
+    display: block;
+  }
+}
 @media (min-width: 768px) {
+
+  .md\:block {
+    display: block;
+  }
 
   .md\:w-52 {
     width: 13rem;
