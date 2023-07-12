@@ -9,4 +9,12 @@ const UserSchema = new Schema({
   isAdmin: { type: Boolean, default: false },
 });
 
+UserSchema.virtual("joinedDate").get(function () {
+  const formattedDate = this.joinDate.toLocaleString("en-GB", {
+    year: "2-digit",
+    month: "short",
+    day: "2-digit",
+  });
+  return formattedDate;
+});
 module.exports = mongoose.model("User", UserSchema);

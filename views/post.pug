@@ -5,7 +5,8 @@ block content
         
         div(class="info gap-2 flex justify-between my-2")
             if user && user.isMember
-                p(class="italic underline")=post.user.username
+                p(class="italic underline")
+                    a(href="/users/"+post.user._id)=post.user.username
             else 
                 p(class="italic underline") Anonymous
 

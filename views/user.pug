@@ -5,31 +5,23 @@ block content
             h1(class="text-xl underline font-bold mb-4 tracking-wider text-center") User Details 
             div(class="space-y-2 mb-6 text-center")
                 p(class="text-lg") Username:
-                    span(class=" ml-5 font-semibold text-lg") Tjsm 
-                    span(class="border  border-red-600 text-red-600 rounded-sm ml-4 px-1") Admin
-                    span(class="border  border-green-600 text-green-600 rounded-sm ml-4 px-1") Member
+                    span(class=" ml-5 font-semibold text-lg")=creator.username
+                    if creator.isAdmin 
+                        span(class="border  border-red-600 text-red-600 rounded-sm ml-4 px-1") Admin
+                    if creator.isMember
+                        span(class="border  border-green-600 text-green-600 rounded-sm ml-4 px-1") Member
 
                 p(class="text-lg") Joined at:
-                    span(class=" ml-5  text-lg") 12 Dec 2020
+                    span(class=" ml-5  text-lg") #{creator.joinedDate}
                 p(class="text-lg") Number of posts :
-                    span(class=" ml-5  text-lg") 40
+                    span(class=" ml-5  text-lg") #{posts.length}
             // Get all post sort by date
             hr
-            div(class="mt-6 allposts text-center underline text-lg mb-4") All posts by Tjsm
+            div(class="mt-6 allposts text-center underline text-lg mb-4") All posts by #{creator.username}
             ul(class="text-center space-y-2")
-                li
-                    a(href="/catalog/post/id") How to deal with deez nuts 
-                li
-                    a(href="/catalog/post/id") How to deal with deez nuts
-                li
-                    a(href="/catalog/post/id") How to deal with deez nuts
-                li
-                    a(href="/catalog/post/id") How to deal with deez nuts
-                li
-                    a(href="/catalog/post/id") How to deal with deez nuts
-                li
-                    a(href="/catalog/post/id") How to deal with deez nuts
-                li
-                    a(href="/catalog/post/id") How to deal with deez nuts
+                each post of posts
+                    li
+                        a(href="/catalog/post/"+post._id) #{post.title}
+                
             hr
             

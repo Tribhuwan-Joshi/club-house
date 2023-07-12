@@ -9,9 +9,9 @@ const PostSchema = new Schema({
 });
 
 PostSchema.virtual("postDate").get(function () {
-  const formattedDate = this.date.toLocaleDateString("en-GB", {
+  const formattedDate = this.date.toLocaleString("en-GB", {
     year: "2-digit",
-    month: "2-digit",
+    month: "short",
     day: "2-digit",
   });
   return formattedDate;
