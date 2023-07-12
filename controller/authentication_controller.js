@@ -74,7 +74,12 @@ exports.signup_post = [
       } else {
         brcypt.hash(user.password, 10, async (err, hashedPassword) => {
           user.password = hashedPassword;
+          if (req.body.adminCode === process.env.ADMIN_CODE) {
+            user.isAdmin = true;
+            user.isMember = true;
+          }
           const result = await user.save();
+          console.log(result);
           req.login(user, function (err) {
             if (err) {
               return next(err);

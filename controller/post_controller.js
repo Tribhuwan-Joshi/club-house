@@ -13,7 +13,7 @@ exports.post_get = async function (req, res, next) {
   const id = req.params.id;
   try {
     const post = await Post.findById(id).populate("user").exec();
-    console.log(post);
+
     res.render("post", { post, user: req.user });
   } catch (err) {
     next(err);

@@ -27,9 +27,9 @@ html(lang='en')
                     li 
                         a(href="/signup") Signup  
                 else
-                    
-                    li(class="hidden md:block")  
-                        a(href="/"+user._id+"/membership") Membership 
+                    if !user.isMember
+                        li(class="hidden md:block")  
+                            a(href="/"+user._id+"/membership") Membership 
                     li(class="hidden md:block underline") 
                         a(href="/users/"+user._id) #{user.username}  
                     form(action="/logout" method="POST")
