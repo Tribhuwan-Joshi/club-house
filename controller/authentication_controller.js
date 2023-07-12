@@ -19,7 +19,7 @@ exports.signup_post = [
   body("username")
     .custom(async (val) => {
       const user = await User.findOne({ username: val });
-      console.log("val is ", val, " and user is ", user);
+
       if (user) {
         throw new Error("Username already in use");
       }
@@ -64,8 +64,6 @@ exports.signup_post = [
         password: req.body.password,
       });
       if (!errors.isEmpty()) {
-        console.log(errors.array());
-
         res.render("signup", {
           title: "Sign up",
           username: user.username,
@@ -79,7 +77,7 @@ exports.signup_post = [
             user.isMember = true;
           }
           const result = await user.save();
-          console.log(result);
+
           req.login(user, function (err) {
             if (err) {
               return next(err);
@@ -103,8 +101,20 @@ exports.membership_get = function (req, res, next) {
   res.render("membership", { title: "Get Membership" });
 };
 
-exports.membership_post = function (req, res, next) {
-  res.send("post membership page");
+exports.membership_post = async function (req, res, next) {
+  const code = req.body.code;
+  const user = req.user;
+  if (user) {
+    try {
+      if (code === process.env.CLUB_CODE) {
+        user.isMember = true;
+        await User.findByIdAndUpdate(user._id, user, {});
+        res.redirect("/");
+      }
+    } catch (err) {
+      next(err);
+    }
+  } else next(new Error("Not Found"));
 };
 
 exports.logout = function (req, res, next) {

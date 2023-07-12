@@ -32,7 +32,7 @@ exports.create_get = function (req, res, next) {
 
 exports.create_post = [
   body("title", "Title is required").trim().escape().isLength({ min: 1 }),
-  body("story", "Tale is important dude").trim().escape().isLength({ min: 1 }),
+  body("story", "Tale is important dude").trim().isLength({ min: 1 }),
   async function (req, res, next) {
     const id = req.params.id;
     const user = User.findById(id);
@@ -61,6 +61,6 @@ exports.delete_post_post = async function (req, res, next) {
     await Post.findByIdAndRemove(id);
     res.redirect("/");
   } catch (err) {
-    console.log(err);
+    next(err);
   }
 };
