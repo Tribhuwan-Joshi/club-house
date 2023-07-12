@@ -12,8 +12,13 @@ block content
 				div(class="border   hover:cursor-pointer p-2 hover:scale-105 transition duration-150 row-span-1 ease-in-out border-black")
 					h1(class="title text-center no-underline font-semibold text-lg")=post.title
 					div(class="info flex gap-2 justify-between mb-2")
-						p(class="italic underline")=post.creator 
-						p(class="underline")=post.postDate 
+						if user && user.isMember
+							p(class="italic underline")=post.user.username
+							p(class="underline")=post.postDate
+						else 
+							p(class="italic underline") Anonymous
+							
+						 
 					p(class="text-ellipsis whitespace-nowrap overflow-hidden")=post.story
 		
 			

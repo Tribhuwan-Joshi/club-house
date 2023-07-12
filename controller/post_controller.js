@@ -4,17 +4,17 @@ const { body, validationResult } = require("express-validator");
 const createError = require("http-errors");
 
 exports.allposts = async function (req, res, next) {
-  const posts = await Post.find({});
-  res.render("index", { title: "Club House", posts });
+  const posts = await Post.find({}).populate("user").exec();
+  const user = req.user;
+  res.render("index", { title: "Club House", posts, user });
 };
 
 exports.post_get = async function (req, res, next) {
   const id = req.params.id;
   try {
     const post = await Post.findById(id).populate("user").exec();
-    const user = await User.findById(post.user);
     console.log(post);
-    res.render("post", { title: post.title, post, user });
+    res.render("post", { post, user: req.user });
   } catch (err) {
     next(err);
   }

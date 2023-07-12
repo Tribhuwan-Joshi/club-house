@@ -4,10 +4,14 @@ block content
         h1(class="text-2xl text-center font-semibold")=post.title
         
         div(class="info gap-2 flex justify-between my-2")
-            p(class="italic underline")=user.isMember ? user.username : 'Anonymous' 
-            if user.isMember
+            if user && user.isMember
+                p(class="italic underline")=post.user.username
+            else 
+                p(class="italic underline") Anonymous
+
+            if user &&  user.isMember
                 p(class="underline")=post.postDate
         p=post.story
-        if user.isAdmin
+        if user && user.isAdmin
             form(action="/catalog/post/"+post._id+"/delete" class="flex justify-end mt-6" method="POST")
                 button(class="bg-red-500 text-white rounded-sm p-1 text-sm ml-auto hover:bg-red-600") Delete Post
