@@ -7,10 +7,23 @@ const createError = require("http-errors");
 exports.login_get = function (req, res, next) {
   res.render("login", { title: "Login" });
 };
-exports.login_post = passport.authenticate("local", {
-  successRedirect: "/",
-  failureRedirect: "/login",
-});
+exports.login_post = (req, res, next) => {
+  passport.authenticate("local", (err, user, info) => {
+    if (err) {
+      return next(err);
+    }
+    if (!user) {
+      // Incorrect username or password
+      return res.render("login", { error: info.message });
+    }
+    req.logIn(user, (err) => {
+      if (err) {
+        return next(err);
+      }
+      return res.redirect("/");
+    });
+  })(req, res, next);
+};
 
 exports.signup_get = function (req, res, next) {
   res.render("signup", { title: "Sign up" });
