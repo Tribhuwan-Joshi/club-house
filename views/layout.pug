@@ -19,8 +19,8 @@ html(lang='en')
                 h1(class="text-lg") 
                     a(href="/catalog/post/create") Create Post
             ul(class="flex lg:text-lg w-max items-center md:w-max gap-4")
-                li(class="hidden md:block")
-                    a(href="/catalog") Home 
+                li
+                    a(href="/catalog" class="hidden md:block") Home 
                 if !user
                     li 
                         a(href="/login") Login
@@ -28,7 +28,7 @@ html(lang='en')
                         a(href="/signup") Signup  
                 else
                     if !user.isMember
-                        li(class="hidden md:block")  
+                        li  
                             a(href="/"+user._id+"/membership") Membership 
                     li(class="hidden md:block underline") 
                         a(href="/users/"+user._id) #{user.username}  
