@@ -1,7 +1,8 @@
-const User = require("../models/user");
+const User = require("../models/user.js");
 const { body, validationResult } = require("express-validator");
 const passport = require("passport");
 const brcypt = require("bcryptjs");
+const createError = require("http-errors");
 
 exports.login_get = function (req, res, next) {
   res.render("login", { title: "Login" });
@@ -89,6 +90,11 @@ exports.signup_post = [
 ];
 
 exports.membership_get = function (req, res, next) {
+  if (!req.user) {
+    const err = createError("Unauthorized Access");
+    err.status = 401;
+    next(err);
+  }
   res.render("membership", { title: "Get Membership" });
 };
 

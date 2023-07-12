@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const PostSchema = new Schema({
-  creator: { type: Schema.Types.String, ref: "user" },
+  user: { type: Schema.Types.ObjectId, ref: "User" },
   date: { type: Date, default: Date.now },
   title: { type: String, required: true },
   story: { type: String, required: true },

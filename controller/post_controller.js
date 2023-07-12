@@ -10,13 +10,14 @@ exports.allposts = async function (req, res, next) {
 
 exports.post_get = async function (req, res, next) {
   const id = req.params.id;
-  const post = await Post.findById(id);
-  if (!post) next(createError("Post not found"));
-  if (!req.user) {
-    post.creator = "";
-    post.postDate = "";
+  try {
+    const post = await Post.findById(id).populate("user").exec();
+    const user = await User.findById(post.user);
+    console.log(post);
+    res.render("post", { title: post.title, post, user });
+  } catch (err) {
+    next(err);
   }
-  res.render("post", { title: post.title, post });
 };
 
 exports.create_get = function (req, res, next) {
@@ -38,7 +39,7 @@ exports.create_post = [
     if (!user) createError("User Not Found");
     const errors = validationResult(req);
     const post = new Post({
-      userId: id,
+      user: id,
       title: req.body.title,
       story: req.body.story,
     });
