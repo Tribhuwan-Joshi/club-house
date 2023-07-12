@@ -7,6 +7,5 @@ exports.getUserDetails = async function (req, res, next) {
     const creator = await User.findById(id);
     const posts = await Post.find({ user: id });
     res.render("user", { creator, posts, title: creator.username });
-  }
-  next(new Error("Unauthorized Access"));
+  } else next(new Error("Unauthorized Access"));
 };
