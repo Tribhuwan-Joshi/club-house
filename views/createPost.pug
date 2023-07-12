@@ -4,7 +4,7 @@ block content
         h1(class="text-center text-xl font-semibold underline tracking-wider") Create New Post 
         form(class="mx-auto border border-gray-700 bg-gray-100  w-max p-4 grid grid-cols-[1fr,2fr] gap-6 my-10" action=`/catalog/post/create/${user._id}` method="post")
             label(for="title" class="text-lg justify-self-center") Title 
-            input(id="title" value=post && post.title ? title : ''  required name="title" placeholder="My first day at Job" type="text"  class="px-1 font-mono border border-black")
+            input(id="title" autofocus value=post && post.title ? title : ''  required name="title" placeholder="My first day at Job" type="text"  class="px-1 font-mono border border-black")
             label(for="story" class="text-lg justify-self-center") Your tale 
             textarea(name="story" value=post && post.story ? story : '' required  class="p-1 resize border border-gray-400" spellcheck="false"  id="story" cols="40" rows="8")
             

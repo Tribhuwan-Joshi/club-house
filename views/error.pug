@@ -1,6 +1,7 @@
 extends layout
 
 block content
-    h1= message
-    h2= error.status
-    pre #{error.stack}
+    div(class=" text-center ")
+        h1(class="text-xl")= message
+        h2(class="text-xl")= error.status
+        pre(class="text-base text-left") #{error.stack}

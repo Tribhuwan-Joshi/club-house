@@ -31,7 +31,7 @@ html(lang='en')
                     li(class="hidden md:block")  
                         a(href="/"+user._id+"/membership") Membership 
                     li(class="hidden md:block underline") 
-                        a(href="/user/"+user._id) #{user.username}  
+                        a(href="/users/"+user._id) #{user.username}  
                     form(action="/logout" method="POST")
                         button(class="p-1 px-2 text-lg") Logout 
     block content

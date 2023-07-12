@@ -8,12 +8,24 @@ exports.allposts = async function (req, res, next) {
   res.render("index", { title: "Club House", posts });
 };
 
-exports.post_get = function (req, res, next) {
+exports.post_get = async function (req, res, next) {
   const id = req.params.id;
-  res.render("post", { title: id });
+  const post = await Post.findById(id);
+  if (!post) next(createError("Post not found"));
+  if (!req.user) {
+    post.creator = "";
+    post.postDate = "";
+  }
+  res.render("post", { title: post.title, post });
 };
 
 exports.create_get = function (req, res, next) {
+  if (!req.user) {
+    const err = new Error("Unauthorized Acess");
+    err.status = 401;
+    next(err);
+  }
+
   res.render("createPost", { title: "Create Post" });
 };
 

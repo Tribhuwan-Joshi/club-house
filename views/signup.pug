@@ -2,7 +2,7 @@ extends layout
 block content
 	form(class="mx-auto border border-gray-700 bg-gray-100   w-max p-4 grid grid-cols-[1fr,2fr] gap-6 my-10" action="" method="post")
 		label(for="username") Username 
-		input(id="username" required name="username" placeholder="Unique Username" type="text" value=(username?username:'') class="px-1 font-mono border border-black")
+		input(id="username" autofocus required name="username" placeholder="Unique Username" type="text" value=(username?username:'') class="px-1 font-mono border border-black")
 		label(for="password") Password 
 		input(id="password" required name="password"  type="password" class="px-1 font-mono border border-black")
 		label(for="confirm") Confirm Password 

@@ -6,14 +6,14 @@ block content
 		p Interact with club members and keep your secrets.
 		p You can create new post by signing up 
 		p(class="break-words ") To get access to club member profile you have to become a member by using club code (thats a secret !)
-	div(class="posts w-[90%] bg-gray-50  min-w-[300px] justify-center  mx-auto p-4 gap-4 grid grid-cols-[repeat(auto-fit,minmax(100px,400px))]")
+	div(class="posts w-[90%] bg-gray-50 auto-rows-max  min-w-[300px] justify-center   mx-auto p-4 gap-4 grid grid-cols-[repeat(auto-fit,minmax(100px,400px))]")
 		each post of posts
-			a(href="/catalog/post/" + post._id  class="text-inherit hover:no-underline") 
-				div(class="border hover:cursor-pointer p-2 hover:scale-105 transition duration-150 ease-in-out border-black")
+			a(href="/catalog/post/" + post._id  class="text-inherit max-h-[100%]  self-start hover:no-underline") 
+				div(class="border   hover:cursor-pointer p-2 hover:scale-105 transition duration-150 row-span-1 ease-in-out border-black")
 					h1(class="title text-center no-underline font-semibold text-lg")=post.title
 					div(class="info flex gap-2 justify-between mb-2")
-						p(class="italic underline") Anonymous 
-						p(class="underline") 12/2/22 3:45am
-					p=post.story
+						p(class="italic underline")=post.creator 
+						p(class="underline")=post.postDate 
+					p(class="text-ellipsis whitespace-nowrap overflow-hidden")=post.story
 		
 			
