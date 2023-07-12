@@ -55,7 +55,12 @@ exports.create_post = [
   },
 ];
 
-exports.delete_post_post = function (req, res, next) {
+exports.delete_post_post = async function (req, res, next) {
   const id = req.params.id;
-  res.send(`Delete post with id ${id}`);
+  try {
+    await Post.findByIdAndRemove(id);
+    res.redirect("/");
+  } catch (err) {
+    console.log(err);
+  }
 };
